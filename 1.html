@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>단어 테스트</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        text-align: center;
+      }
+      .container {
+        width: 50%;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+      .question {
+        margin: 20px 0;
+        font-size: 18px;
+      }
+      button {
+        background-color: #ffcc00;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+        margin: 10px;
+        display: none; /* 초기에는 버튼 숨김 */
+      }
+      button:hover {
+        background-color: #ff9900;
+      }
+      .result {
+        margin-top: 20px;
+        font-size: 20px;
+      }
+      .incorrect {
+        color: red;
+      }
+      .correct {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>단어 테스트</h1>
+      <form id="test-form">
+        <!-- 문제들이 이곳에 동적으로 들어갑니다 -->
+      </form>
+      <div id="result" class="result" style="display: none">
+        점수: <span id="score"></span>/10
+      </div>
+      <button id="submit-button" onclick="submitTest()">제출</button>
+    </div>
+
+    <script>
+      const words = [
+        { word: "Rain", options: ["하늘", "구름", "비", "바람"], answer: "비" },
+        { word: "Road", options: ["길", "도로", "차", "건물"], answer: "도로" },
+        {
+          word: "Safe",
+          options: ["위험한", "안전한", "불안한", "모험적인"],
+          answer: "안전한",
+        },
+        {
+          word: "Attention",
+          options: ["주의", "소리", "햇빛", "바람"],
+          answer: "주의",
+        },
+        {
+          word: "Damage",
+          options: ["손상", "도움", "상태", "회복"],
+          answer: "손상",
+        },
+        {
+          word: "Condition",
+          options: ["상태", "기후", "이해", "목표"],
+          answer: "상태",
+        },
+        {
+          word: "Schedule",
+          options: ["시간", "목표", "일정", "계획"],
+          answer: "일정",
+        },
+        {
+          word: "Rearrangement",
+          options: ["변경", "조정", "수정", "재조정"],
+          answer: "재조정",
+        },
+        {
+          word: "Continue",
+          options: ["계속하다", "중지하다", "시작하다", "끝내다"],
+          answer: "계속하다",
+        },
+        {
+          word: "Appreciate",
+          options: ["감사하다", "속이다", "유지하다", "말하다"],
+          answer: "감사하다",
+        },
+        {
+          word: "Cooperation",
+          options: ["협력", "분리", "이해", "감사"],
+          answer: "협력",
+        },
+        {
+          word: "Vice principal",
+          options: ["부교장", "교장", "학생", "교수"],
+          answer: "부교장",
+        },
+        {
+          word: "Delays",
+          options: ["지연", "시작", "계획", "목표"],
+          answer: "지연",
+        },
+        {
+          word: "Understand",
+          options: ["이해하다", "설명하다", "말하다", "기다리다"],
+          answer: "이해하다",
+        },
+      ];
+
+      let score = 0;
+      const testForm = document.getElementById("test-form");
+      const submitButton = document.getElementById("submit-button");
+
+      // 랜덤으로 문제의 답을 섞어주는 함수
+      function shuffleOptions(options) {
+        for (let i = options.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [options[i], options[j]] = [options[j], options[i]]; // swap
+        }
+        return options;
+      }
+
+      // 문제와 옵션을 화면에 표시하는 함수
+      function displayQuestions() {
+        testForm.innerHTML = words
+          .map((word, index) => {
+            const shuffledOptions = shuffleOptions([...word.options]);
+
+            return `
+                    <div class="question">
+                        <p>${word.word}</p>
+                        ${shuffledOptions
+                          .map(
+                            (option, optionIndex) => `
+                            <input type="radio" name="q${index}" value="${option}" id="q${index}_opt${optionIndex}" onchange="showSubmitButton()">
+                            <label for="q${index}_opt${optionIndex}">${option}</label><br>
+                        `
+                          )
+                          .join("")}
+                    </div>
+                `;
+          })
+          .join("");
+      }
+
+      // 제출 버튼을 보이도록 설정하는 함수
+      function showSubmitButton() {
+        submitButton.style.display = "inline-block"; // 답을 하나라도 선택하면 버튼 보이기
+      }
+
+      // 제출 후 결과를 계산하고 보여주는 함수
+      function submitTest() {
+        score = 0;
+        words.forEach((word, index) => {
+          const selectedOption = document.querySelector(
+            `input[name="q${index}"]:checked`
+          );
+          const questionDiv = document
+            .querySelector(`#q${index}_opt0`)
+            .closest(".question");
+          if (selectedOption) {
+            const isCorrect = selectedOption.value === word.answer;
+            const feedback = document.createElement("p");
+            feedback.textContent = `Your answer: ${selectedOption.value} - ${
+              isCorrect ? "Correct" : "Incorrect"
+            }`;
+            feedback.classList.add(isCorrect ? "correct" : "incorrect");
+            questionDiv.appendChild(feedback);
+            if (isCorrect) {
+              score++;
+            }
+          }
+        });
+
+        // 결과 표시
+        document.getElementById("score").textContent = score;
+        document.getElementById("result").style.display = "block";
+        submitButton.style.display = "none"; // 결과가 나온 후 제출 버튼 숨김
+      }
+
+      // 페이지 로드 시 문제 출력
+      displayQuestions();
+    </script>
+  </body>
+</html>
