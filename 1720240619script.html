@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>단어 테스트</title>
+    <style>
+      p {
+        text-align: center;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        color: #ffa500;
+      }
+      p.question {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+      .answer-option {
+        margin-bottom: 10px;
+      }
+      .answer-option label {
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .submit-btn {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+      .submit-btn:hover {
+        background-color: #45a049;
+      }
+      .question-container {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>단어 테스트</h1>
+
+      <!-- 문제 지문 -->
+      <div class="question-container">
+        <p class="question">
+          18. 다음 글에 드러난 ‘I’의 심경 변화로 가장 적절한 것은?
+        </p>
+        <p class="question">
+          <br />
+          As I walked from the mailbox, my heart was beating rapidly. In my
+          hands, I held the letter from the university I had applied to. I
+          thought my grades were good enough to cross the line and my
+          application letter was well­written, but was it enough? I hadn’t slept
+          a wink for days. As I carefully tore into the paper of the envelope,
+          the letter slowly emerged with the opening phrase, “It is our great
+          pleasure...” I shouted with joy, “I am in!” As I held the letter, I
+          began to make a fantasy about my college life in a faraway city.<br />
+        </p>
+      </div>
+
+      <!-- 객관식 문제 -->
+      <div class="question-container">
+        <p class="question"></p>
+        <div class="answer-option">
+          <input type="radio" id="option1" name="question1" value="1" />
+          <label for="option1">relaxed → upset</label>
+        </div>
+        <div class="answer-option">
+          <input type="radio" id="option2" name="question1" value="2" />
+          <label for="option2">anxious → delighted</label>
+        </div>
+        <div class="answer-option">
+          <input type="radio" id="option3" name="question1" value="3" />
+          <label for="option3">guilty → confident</label>
+        </div>
+        <div class="answer-option">
+          <input type="radio" id="option4" name="question1" value="4" />
+          <label for="option4">angry → grateful</label>
+        </div>
+        <div class="answer-option">
+          <input type="radio" id="option5" name="question1" value="5" />
+          <label for="option5">hopeful → disappointed</label>
+        </div>
+      </div>
+
+      <button class="submit-btn" onclick="submitQuiz()">제출하기</button>
+      <h1>단어</h1>
+      <p>Walk</p>
+      <p>영어 발음: [wɔːk]</p>
+      <p>품사: 동사</p>
+      <p>뜻: 걷다</p>
+
+      <p>Mailbox</p>
+      <p>영어 발음: [ˈmeɪlbɒks]</p>
+      <p>품사: 명사</p>
+      <p>뜻: 우편함</p>
+
+      <p>Beat</p>
+      <p>영어 발음: [biːt]</p>
+      <p>품사: 동사</p>
+      <p>뜻: 이기다, 때리다</p>
+
+      <p>Rapidly</p>
+      <p>영어 발음: [ˈræpɪdli]</p>
+      <p>품사: 부사</p>
+      <p>뜻: 급속히, 빠르게</p>
+
+      <p>University</p>
+      <p>영어 발음: [ˌjuːnɪˈvɜːrsəti]</p>
+      <p>품사: 명사</p>
+      <p>뜻: 대학교, 대학</p>
+
+      <p>Apply to</p>
+      <p>영어 발음: [əˈplaɪ tuː]</p>
+      <p>품사: 동사구</p>
+      <p>뜻: ~에 지원하다</p>
+
+      <p>Grade</p>
+      <p>영어 발음: [ɡreɪd]</p>
+      <p>품사: 명사/동사</p>
+      <p>뜻: 등급, 학년 / 성적을 매기다</p>
+
+      <p>Application</p>
+      <p>영어 발음: [ˌæplɪˈkeɪʃən]</p>
+      <p>품사: 명사</p>
+      <p>뜻: 신청서, 지원서</p>
+
+      <p>Written</p>
+      <p>영어 발음: [ˈrɪtn]</p>
+      <p>품사: 동사 (과거분사)</p>
+      <p>뜻: 쓴 (Write의 과거분사)</p>
+
+      <p>Slept</p>
+      <p>영어 발음: [slɛpt]</p>
+      <p>품사: 동사 (과거형/과거분사)</p>
+      <p>뜻: 잤다 (Sleep의 과거형/과거분사)</p>
+
+      <p>Held</p>
+      <p>영어 발음: [hɛld]</p>
+      <p>품사: 동사 (과거형/과거분사)</p>
+      <p>뜻: held (Hold의 과거형/과거분사)</p>
+
+      <p>Thought</p>
+      <p>영어 발음: [θɔːt]</p>
+      <p>품사: 동사 (과거형/과거분사)</p>
+      <p>뜻: 생각했다 (Think의 과거형/과거분사)</p>
+
+      <p>Application</p>
+      <p>영어 발음: [ˌæplɪˈkeɪʃən]</p>
+      <p>품사: 명사</p>
+      <p>뜻: 신청서, 지원서</p>
+
+      <p>Carefully</p>
+      <p>영어 발음: [ˈkerfəli]</p>
+      <p>품사: 부사</p>
+      <p>뜻: 조심스럽게</p>
+
+      <p>Tore</p>
+      <p>영어 발음: [tɔːr]</p>
+      <p>품사: 동사 (과거형)</p>
+      <p>뜻: 찢었다 (Tear의 과거형)</p>
+
+      <p>Phrase</p>
+      <p>영어 발음: [freɪz]</p>
+      <p>품사: 명사</p>
+      <p>뜻: 구, 어구</p>
+
+      <p>Emerge</p>
+      <p>영어 발음: [ɪˈmɜːrdʒ]</p>
+      <p>품사: 동사</p>
+      <p>뜻: 나타나다, 드러나다</p>
+
+      <p>Pleasure</p>
+      <p>영어 발음: [ˈplɛʒər]</p>
+      <p>품사: 명사</p>
+      <p>뜻: 기쁨, 즐거움</p>
+
+      <p>Joy</p>
+      <p>영어 발음: [dʒɔɪ]</p>
+      <p>품사: 명사</p>
+      <p>뜻: 기쁨, 즐거움</p>
+
+      <p>Began</p>
+      <p>영어 발음: [bɪˈɡæn]</p>
+      <p>품사: 동사 (과거형)</p>
+      <p>뜻: 시작했다 (Begin의 과거형)</p>
+
+      <p>Guilty</p>
+      <p>영어 발음: [ˈɡɪlti]</p>
+      <p>품사: 형용사</p>
+      <p>뜻: 유죄의, 죄책감을 느끼는</p>
+
+      <p>Confident</p>
+      <p>영어 발음: [ˈkɒnfɪdənt]</p>
+      <p>품사: 형용사</p>
+      <p>뜻: 자신 있는, 확신하는</p>
+
+      <p>Upset</p>
+      <p>영어 발음: [ʌpˈsɛt]</p>
+      <p>품사: 형용사/동사</p>
+      <p>뜻: 기분이 상한 / 상하다, 기분 상하게 하다</p>
+
+      <p>Hopeful</p>
+      <p>영어 발음: [ˈhoʊpfəl]</p>
+      <p>품사: 형용사</p>
+      <p>뜻: 희망적인, 희망을 가지는</p>
+
+      <p>Disappointed</p>
+      <p>영어 발음: [ˌdɪsəˈpɔɪntɪd]</p>
+      <p>품사: 형용사</p>
+      <p>뜻: 실망한</p>
+
+      <p>Anxious</p>
+      <p>영어 발음: [ˈæŋkʃəs]</p>
+      <p>품사: 형용사</p>
+      <p>뜻: 걱정하는, 불안한</p>
+
+      <p>Delighted</p>
+      <p>영어 발음: [dɪˈlaɪtɪd]</p>
+      <p>품사: 형용사</p>
+      <p>뜻: 기쁜, 매우 기뻐하는</p>
+
+      <p>Grateful</p>
+      <p>영어 발음: [ˈɡreɪtfəl]</p>
+      <p>품사: 형용사</p>
+      <p>뜻: 감사하는</p>
+    </div>
+
+    <script>
+      function submitQuiz() {
+        var selectedAnswer = document.querySelector(
+          'input[name="question1"]:checked'
+        );
+        if (selectedAnswer) {
+          var selectedValue = selectedAnswer.value;
+          var correctAnswer = "2"; // 정답은 3번
+          var feedback = "";
+
+          if (selectedValue === correctAnswer) {
+            feedback = "정답입니다!";
+          } else {
+            feedback = "틀렸습니다. 정답은 'anxious → delighted' 입니다.";
+          }
+
+          alert(
+            "선택한 답은: " +
+              selectedAnswer.nextElementSibling.textContent +
+              "\n" +
+              feedback
+          );
+        } else {
+          alert("답을 선택해주세요.");
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>단어 테스트</title>
+    <style>
+      p {
+        text-align: center;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        color: #ffa500;
+      }
+      p.question {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+      .answer-option {
+        margin-bottom: 10px;
+      }
+      .answer-option label {
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .submit-btn {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+      .submit-btn:hover {
+        background-color: #45a049;
+      }
+      .question-container {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>단어 테스트</h1>
+
+      <!-- 문제 지문 -->
+      <div class="question-container">
+        <p class="question">18. 다음 글의 목적으로 가장 적절한 것은?</p>
+        <p class="question">
+          Dear Reader,<br />
+          We always appreciate your support. As you know, our service is now
+          available through an app. There has never been a better time to switch
+          to an online membership of TourTide Magazine. At a 50% discount off
+          your current print subscription, you can access a full year of online
+          reading. Get new issues and daily web pieces at TourTide.com, read or
+          listen to TourTide Magazine via the app, and get our members­only
+          newsletter. You’ll also gain access to our editors’ selections of the
+          best articles. Join today! <br />
+          Yours, TourTide Team
+        </p>
+      </div>
+
+      <!-- 객관식 문제 -->
+      <div class="question-container">
+        <p class="question"></p>
+        <div class="answer-option">
+          <input type="radio" id="option1" name="question1" value="1" />
+          <label for="option1">여행 일정 지연에 대해 사과하려고</label>
+        </div>
+        <div class="answer-option">
+          <input type="radio" id="option2" name="question1" value="2" />
+          <label for="option2">잡지 온라인 구독을 권유하려고</label>
+        </div>
+        <div class="answer-option">
+          <input type="radio" id="option3" name="question1" value="3" />
+          <label for="option3">무료 잡지 신청을 홍보하려고</label>
+        </div>
+        <div class="answer-option">
+          <input type="radio" id="option4" name="question1" value="4" />
+          <label for="option4">여행 후기 모집을 안내하려고</label>
+        </div>
+        <div class="answer-option">
+          <input type="radio" id="option5" name="question1" value="5" />
+          <label for="option5">기사에 대한 독자 의견에 답변하려고</label>
+        </div>
+      </div>
+
+      <button class="submit-btn" onclick="submitQuiz()">제출하기</button>
+      <h1>단어</h1>
+      <p>Appreciate</p>
+      <p>영어 발음: [əˈpriʃieɪt]</p>
+      <p>품사: 동사</p>
+      <p>뜻: 감사하다, 고마워하다</p>
+
+      <p>Support</p>
+      <p>영어 발음: [səˈpɔːrt]</p>
+      <p>품사: 동사/명사</p>
+      <p>뜻: 지원하다, 지지하다 / 지원, 지지</p>
+
+      <p>Available</p>
+      <p>영어 발음: [əˈveɪləbl]</p>
+      <p>품사: 형용사</p>
+      <p>뜻: 이용할 수 있는, 유효한</p>
+
+      <p>Through</p>
+      <p>영어 발음: [θruː]</p>
+      <p>품사: 전치사/부사</p>
+      <p>뜻: ~을 통해, ~을 거쳐</p>
+
+      <p>App</p>
+      <p>영어 발음: [æp]</p>
+      <p>품사: 명사</p>
+      <p>뜻: 애플리케이션, 응용 프로그램</p>
+
+      <p>Switch</p>
+      <p>영어 발음: [swɪʧ]</p>
+      <p>품사: 동사/명사</p>
+      <p>뜻: 전환하다, 바꾸다 / 스위치</p>
+
+      <p>Subscription</p>
+      <p>영어 발음: [səbˈskrɪpʃən]</p>
+      <p>품사: 명사</p>
+      <p>뜻: 구독, 가입</p>
+
+      <p>Print</p>
+      <p>영어 발음: [prɪnt]</p>
+      <p>품사: 동사/명사</p>
+      <p>뜻: 인쇄하다 / 인쇄물</p>
+
+      <p>Access</p>
+      <p>영어 발음: [ˈæksɛs]</p>
+      <p>품사: 명사/동사</p>
+      <p>뜻: 접근, 이용 / 접근하다</p>
+
+      <p>Via</p>
+      <p>영어 발음: [ˈvaɪə]</p>
+      <p>품사: 전치사</p>
+      <p>뜻: ~을 통해, ~을 경유하여</p>
+
+      <p>Gain</p>
+      <p>영어 발음: [ɡeɪn]</p>
+      <p>품사: 동사/명사</p>
+      <p>뜻: 얻다, 증가하다 / 이득, 증가</p>
+
+      <p>Editor</p>
+      <p>영어 발음: [ˈɛdɪtər]</p>
+      <p>품사: 명사</p>
+      <p>뜻: 편집자</p>
+    </div>
+
+    <script>
+      function submitQuiz() {
+        var selectedAnswer = document.querySelector(
+          'input[name="question1"]:checked'
+        );
+        if (selectedAnswer) {
+          var selectedValue = selectedAnswer.value;
+          var correctAnswer = "2"; // 정답은 3번
+          var feedback = "";
+
+          if (selectedValue === correctAnswer) {
+            feedback = "정답입니다!";
+          } else {
+            feedback =
+              "틀렸습니다. 정답은 '잡지 온라인 구독을 권유하려고' 입니다.";
+          }
+
+          alert(
+            "선택한 답은: " +
+              selectedAnswer.nextElementSibling.textContent +
+              "\n" +
+              feedback
+          );
+        } else {
+          alert("답을 선택해주세요.");
+        }
+      }
+    </script>
+  </body>
+</html>
