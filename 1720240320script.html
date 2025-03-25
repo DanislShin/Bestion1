@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>단어 테스트</title>
+    <style>
+      p {
+        text-align: center;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        color: #ffa500;
+      }
+      p.question {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+      .answer-option {
+        margin-bottom: 10px;
+      }
+      .answer-option label {
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .submit-btn {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+      .submit-btn:hover {
+        background-color: #45a049;
+      }
+      .question-container {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>단어 테스트</h1>
+
+      <!-- 문제 지문 -->
+      <div class="question-container">
+        <p class="question">
+          20. 다음 글에서 필자가 주장하는 바로 가장 적절한 것은?
+        </p>
+        <p class="question">
+          <br />
+          Magic is what we all wish for to happen in our life. Do you love the
+          movie Cinderella like me? Well, in real life, you can also create
+          magic. Here’s the trick. Write down all the real­time challenges that
+          you face and deal with. Just change the challenge statement into
+          positive statements. Let me give you an example here. If you struggle
+          with getting up early in the morning, then write a positive statement
+          such as “I get up early in the morning at 5:00 am every day.” Once you
+          write these statements, get ready to witness magic and confidence. You
+          will be surprised that just by writing these statements, there is a
+          shift in the way you think and act. Suddenly you feel more powerful
+          and positive.<br />
+        </p>
+      </div>
+
+      <!-- 객관식 문제 -->
+      <div class="question-container">
+        <p class="question"></p>
+        <div class="answer-option">
+          <input type="radio" id="option1" name="question1" value="1" />
+          <label for="option1"
+            >목표한 바를 꼭 이루려면 생각을 곧바로 행동으로 옮겨라.</label
+          >
+        </div>
+        <div class="answer-option">
+          <input type="radio" id="option2" name="question1" value="2" />
+          <label for="option2"
+            >자신감을 얻으려면 어려움을 긍정적인 진술로 바꿔 써라.</label
+          >
+        </div>
+        <div class="answer-option">
+          <input type="radio" id="option3" name="question1" value="3" />
+          <label for="option3"
+            >어려운 일을 해결하려면 주변 사람에게 도움을 청하라.</label
+          >
+        </div>
+        <div class="answer-option">
+          <input type="radio" id="option4" name="question1" value="4" />
+          <label for="option4"
+            >일상에서 자신감을 향상하려면 틈틈이 마술을 배워라.</label
+          >
+        </div>
+        <div class="answer-option">
+          <input type="radio" id="option5" name="question1" value="5" />
+          <label for="option5"
+            >실생활에서 마주하는 도전을 피하지 말고 견뎌 내라.</label
+          >
+        </div>
+      </div>
+
+      <button class="submit-btn" onclick="submitQuiz()">제출하기</button>
+      <h1>단어</h1>
+      <p>Magic</p>
+      <p>영어 발음: [ˈmædʒɪk]</p>
+      <p>품사: 명사, 형용사</p>
+      <p>뜻: 마법 (명사), 마법의 (형용사)</p>
+      <p>Wish for</p>
+      <p>영어 발음: [wɪʃ fɔːr]</p>
+      <p>품사: 동사구</p>
+      <p>뜻: ~을 바라다</p>
+      <p>Create</p>
+      <p>영어 발음: [kriˈeɪt]</p>
+      <p>품사: 동사</p>
+      <p>뜻: 창조하다</p>
+      <p>Trick</p>
+      <p>영어 발음: [trɪk]</p>
+      <p>품사: 명사, 동사</p>
+      <p>뜻: 속임수 (명사), 속이다 (동사)</p>
+      <p>Face</p>
+      <p>영어 발음: [feɪs]</p>
+      <p>품사: 명사, 동사</p>
+      <p>뜻: 얼굴 (명사), 마주하다 (동사)</p>
+      <p>Deal with</p>
+      <p>영어 발음: [diːl wɪð]</p>
+      <p>품사: 동사구</p>
+      <p>뜻: ~을 다루다</p>
+      <p>Positive</p>
+      <p>영어 발음: [ˈpɑːzətɪv]</p>
+      <p>품사: 형용사</p>
+      <p>뜻: 긍정적인</p>
+      <p>Statement</p>
+      <p>영어 발음: [ˈsteɪtmənt]</p>
+      <p>품사: 명사</p>
+      <p>뜻: 진술, 성명</p>
+      <p>Struggle with</p>
+      <p>영어 발음: [ˈstrʌɡl wɪð]</p>
+      <p>품사: 동사구</p>
+      <p>뜻: ~와 싸우다, ~로 고투하다</p>
+      <p>Witness</p>
+      <p>영어 발음: [ˈwɪtnəs]</p>
+      <p>품사: 명사, 동사</p>
+      <p>뜻: 목격자 (명사), 목격하다 (동사)</p>
+      <p>Shift</p>
+      <p>영어 발음: [ʃɪft]</p>
+      <p>품사: 명사, 동사</p>
+      <p>뜻: 변화, 교대 (명사), 이동하다 (동사)</p>
+      <p>Suddenly</p>
+      <p>영어 발음: [ˈsʌdənli]</p>
+      <p>품사: 부사</p>
+      <p>뜻: 갑자기</p>
+    </div>
+
+    <script>
+      function submitQuiz() {
+        var selectedAnswer = document.querySelector(
+          'input[name="question1"]:checked'
+        );
+        if (selectedAnswer) {
+          var selectedValue = selectedAnswer.value;
+          var correctAnswer = "2"; // 정답은 3번
+          var feedback = "";
+
+          if (selectedValue === correctAnswer) {
+            feedback = "정답입니다!";
+          } else {
+            feedback =
+              "틀렸습니다. 정답은 '자신감을 얻으려면 어려움을 긍정적인 진술로 바꿔 써라.' 입니다.";
+          }
+
+          alert(
+            "선택한 답은: " +
+              selectedAnswer.nextElementSibling.textContent +
+              "\n" +
+              feedback
+          );
+        } else {
+          alert("답을 선택해주세요.");
+        }
+      }
+    </script>
+  </body>
+</html>
