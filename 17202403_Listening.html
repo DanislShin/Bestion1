@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>고1 영어 듣기 연습 (1~4번)</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.8;
+        padding: 20px;
+        background: #f4f4f4;
+      }
+      h2 {
+        color: #333;
+      }
+      .sentence {
+        background: white;
+        border: 1px solid #ccc;
+        padding: 12px;
+        margin-bottom: 8px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .sentence:hover {
+        background: #e0f7fa;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>🎧 1번 문제 - 학교 방송</h2>
+    <div class="sentence" onclick="speak(this)">
+      Good afternoon, students! This is your vice principal, Jack Eliot.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      Due to the heavy rain last night, there’s some damage on the road and the
+      road condition is not good.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      So we decided to make some rearrangements to the school shuttle bus
+      schedule.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      From tomorrow, keep in mind that the bus schedule will be delayed by 15
+      minutes.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      We want to make sure all of you are safe.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      This bus schedule change will continue for one week.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      We appreciate your understanding and cooperation.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      Thank you for your attention!
+    </div>
+
+    <h2>🚲 2번 문제 - 전기 자전거 대화</h2>
+    <div class="sentence" onclick="speak(this)">
+      Brian, I heard that you are thinking of buying an electric bicycle.
+    </div>
+    <div class="sentence" onclick="speak(this)">Yes, that’s right.</div>
+    <div class="sentence" onclick="speak(this)">
+      That’s good. But be careful when you ride it.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      Yeah, I know what you mean. On my way here I saw a man riding an electric
+      bicycle without wearing a helmet.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      Some riders don’t even follow basic traffic rules.
+    </div>
+    <div class="sentence" onclick="speak(this)">What do you mean by that?</div>
+    <div class="sentence" onclick="speak(this)">
+      These days many people ride electric bicycles on sidewalks.
+    </div>
+    <div class="sentence" onclick="speak(this)">Yes, it’s so dangerous.</div>
+    <div class="sentence" onclick="speak(this)">
+      Right. There should be stricter rules about riding electric bicycles.
+    </div>
+    <div class="sentence" onclick="speak(this)">I totally agree with you.</div>
+
+    <h2>🕒 3번 문제 - 시간 관리 팁 안내</h2>
+    <div class="sentence" onclick="speak(this)">
+      Hello, this is your student counselor, Susan Smith.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      You might be worried about your new school life as a freshman.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      You have a lot of things to do in the beginning of the year.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      Today, I’m going to give you a tip about time management.
+    </div>
+    <div class="sentence" onclick="speak(this)">Make a to-do list!</div>
+    <div class="sentence" onclick="speak(this)">
+      Write down the tasks you have to do on a list and check off what you
+      finish, one by one.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      By doing this, you won’t miss the things you need to do.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      Using a to-do list will help you manage your time efficiently.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      Good luck to you and don’t forget to start today.
+    </div>
+
+    <h2>📰 4번 문제 - 동아리방 묘사</h2>
+    <div class="sentence" onclick="speak(this)">
+      Hi, Amy. I heard that you’ve joined the English Newspaper Club.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      Yes, Tom. I went to the club room yesterday and took a picture of it.
+      Look.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      Wow, the place looks nice. I like the lockers on the left.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      Yes, they’re good. We also have a star-shaped mirror on the wall.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      It looks cool. What’s that on the bookshelf?
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      Oh, that’s the trophy my club won for ‘Club of the Year’.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      You must be very proud of it. There’s also a computer on the right side of
+      the room.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      Yeah, we use the computer when we need it.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      Great. I can see a newspaper on the table.
+    </div>
+    <div class="sentence" onclick="speak(this)">
+      Yes, it was published last December.
+    </div>
+
+    <script>
+      function speak(element) {
+        const utterance = new SpeechSynthesisUtterance(element.textContent);
+        utterance.lang = "en-US";
+        speechSynthesis.cancel(); // 기존 음성 중지
+        speechSynthesis.speak(utterance);
+      }
+    </script>
+  </body>
+</html>
