@@ -1,3 +1,49 @@
+<script type="text/javascript">
+  var gk_isXlsx = false;
+  var gk_xlsxFileLookup = {};
+  var gk_fileData = {};
+  function filledCell(cell) {
+    return cell !== "" && cell != null;
+  }
+  function loadFileData(filename) {
+    if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+      try {
+        var workbook = XLSX.read(gk_fileData[filename], { type: "base64" });
+        var firstSheetName = workbook.SheetNames[0];
+        var worksheet = workbook.Sheets[firstSheetName];
+
+        // Convert sheet to JSON to filter blank rows
+        var jsonData = XLSX.utils.sheet_to_json(worksheet, {
+          header: 1,
+          blankrows: false,
+          defval: "",
+        });
+        // Filter out blank rows (rows where all cells are empty, null, or undefined)
+        var filteredData = jsonData.filter((row) => row.some(filledCell));
+
+        // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+        var headerRowIndex = filteredData.findIndex(
+          (row, index) =>
+            row.filter(filledCell).length >=
+            filteredData[index + 1]?.filter(filledCell).length
+        );
+        // Fallback
+        if (headerRowIndex === -1 || headerRowIndex > 25) {
+          headerRowIndex = 0;
+        }
+
+        // Convert filtered JSON back to CSV
+        var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+        csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+        return csv;
+      } catch (e) {
+        console.error(e);
+        return "";
+      }
+    }
+    return gk_fileData[filename] || "";
+  }
+</script>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -696,6 +742,119 @@
           <div class="keyword-item">
             <span class="keyword-eng">commensurable (비교 가능):</span>
             <span class="keyword-kor">상품 교환의 전제 조건.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <h2>12강</h2>
+
+      <div class="content-box">
+        <div class="english">
+          1. Our brains, shaped by food scarcity, drive us to eat tasty food
+          when available, protect it from others, and overconsume, leading to
+          weight gain.
+        </div>
+        <div class="korean">
+          식량 부족으로 진화한 뇌는 맛있는 음식을 과식하고, 남에게서 보호하며,
+          체중 증가를 유발한다.
+        </div>
+        <div class="keywords">
+          <div class="keyword-title">주요 키워드:</div>
+          <div class="keyword-item">
+            <span class="keyword-eng">overconsume (과식):</span>
+            <span class="keyword-kor">맛있는 음식을 지나치게 먹는 행동.</span>
+          </div>
+          <div class="keyword-item">
+            <span class="keyword-eng">food scarcity (식량 부족):</span>
+            <span class="keyword-kor">뇌의 진화적 배경.</span>
+          </div>
+          <div class="keyword-item">
+            <span class="keyword-eng">weight gain (체중 증가):</span>
+            <span class="keyword-kor">과식의 결과.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-box">
+        <div class="english">
+          2. Globalization shrinks the world through technology, it also
+          universalizes societies, economies, and creates transnational
+          challenges like pandemics.
+        </div>
+        <div class="korean">
+          세계화는 기술로 세상을 축소하였고, 사회와 경제를 보편화하며, 팬데믹
+          같은 초국가적 문제를 만든다.
+        </div>
+        <div class="keywords">
+          <div class="keyword-title">주요 키워드:</div>
+          <div class="keyword-item">
+            <span class="keyword-eng">globalization (세계화):</span>
+            <span class="keyword-kor">기술로 세상을 축소하는 현상.</span>
+          </div>
+          <div class="keyword-item">
+            <span class="keyword-eng">transnational (초국가적):</span>
+            <span class="keyword-kor">세계화로 생긴 문제의 특징.</span>
+          </div>
+          <div class="keyword-item">
+            <span class="keyword-eng">pandemic (팬데믹):</span>
+            <span class="keyword-kor">초국가적 문제의 예시.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-box">
+        <div class="english">
+          3. Fluency in thinking isn’t bad, but over-reliance on familiar ideas
+          can lead to errors, like confusing Moses with Noah in biblical
+          stories.
+        </div>
+        <div class="korean">
+          생각의 유창함은 나쁘지 않지만, 익숙한 아이디어에 지나치게 의존하면
+          성경에서 모세와 노아를 혼동하는 것과 같은 오류가 생긴다.
+        </div>
+        <div class="keywords">
+          <div class="keyword-title">주요 키워드:</div>
+          <div class="keyword-item">
+            <span class="keyword-eng">fluency (유창함):</span>
+            <span class="keyword-kor">빠른 사고의 특징.</span>
+          </div>
+          <div class="keyword-item">
+            <span class="keyword-eng">familiar (익숙한):</span>
+            <span class="keyword-kor">오류를 유발하는 원인.</span>
+          </div>
+          <div class="keyword-item">
+            <span class="keyword-eng">error (오류):</span>
+            <span class="keyword-kor">익숙함에 의존한 결과.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-box">
+        <div class="english">
+          4. Media targeting is key: more channels fragment audiences, making it
+          easier to reach niche groups but harder to run broad advertising
+          because large target groups are harder to form.
+        </div>
+        <div class="korean">
+          미디어 타겟팅이 중요하다: 채널 증가로 시청자가 세분화되어 틈새 그룹에
+          도달하기는 쉬워졌지만, 일반 광고를 하기에 큰 그룹을 만들기가
+          어려워졌다.
+        </div>
+        <div class="keywords">
+          <div class="keyword-title">주요 키워드:</div>
+          <div class="keyword-item">
+            <span class="keyword-eng">targeting (타겟팅):</span>
+            <span class="keyword-kor">미디어 전략의 핵심.</span>
+          </div>
+          <div class="keyword-item">
+            <span class="keyword-eng">fragment (세분화):</span>
+            <span class="keyword-kor">시청자 분산의 원인.</span>
+          </div>
+          <div class="keyword-item">
+            <span class="keyword-eng">niche (틈새):</span>
+            <span class="keyword-kor">타겟팅의 주요 대상.</span>
           </div>
         </div>
       </div>
